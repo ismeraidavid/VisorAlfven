@@ -1,4 +1,3 @@
-# Módulos necesarios
 import numpy as np
 import streamlit as st
 import matplotlib.pyplot as plt
@@ -34,12 +33,9 @@ v1 = V * np.cos(k_z * z - omega_d * t)
 
 st.title('4.3: Phase-mixing theory of Alfven wave propagation')
 
-
 # Enunciado del ejercicio
 st.markdown(
     """
-    
-
     The phase-mixing theory of Alfven wave propagation is not difficult to grasp. Yet, an illustration using a computer program can help a lot in understanding the situation. Consider, therefore, a wave pattern given by the real part of the expression:
 
     $$\\vec{v_1} = v_1 \\cdot \\vec{e_y}$$ with $$v_1 = V \\cdot \\cos[k_z(x) \\cdot z - \\omega_d \\cdot t]$$
@@ -52,18 +48,23 @@ st.markdown(
 
 st.title('Visor de patrones de onda Alfvén')
 
-st.sidebar.markdown("### Constantes")
-st.sidebar.text("Ajusta los valores a tu gusto y observa los cambios.")
-st.sidebar.text("Creado por Ismerai para la asignatura Física Solar ")
-st.sidebar.text("y Clima Espacial (ULL: Máster Universitario en Astrofísica)")
+# Plot v_A(x)
+fig_vA, ax_vA = plt.subplots(figsize=(10, 3))
+ax_vA.plot(x_rango, v_A[0, :], label='$v_A(x)$')
+ax_vA.set_title('Distribution of $v_A(x)$')
+ax_vA.set_xlabel('x')
+ax_vA.set_ylabel('$v_A$')
+ax_vA.legend()
 
-
-# Gráfica
+# Plot principal
 fig, ax = plt.subplots(figsize=(10, 6))
 contour = ax.contourf(x, z, v1, cmap='viridis', levels=100)
 plt.colorbar(contour, ax=ax, label='$v_1$')
 ax.set_title('$v_1 = V \cdot \cos[k_z(x) \cdot z - \omega_d \cdot t]$')
 ax.set_xlabel('x')
 ax.set_ylabel('z')
+ax.set_aspect('equal')  # Ejes proporcionales
 
+st.pyplot(fig_vA)
 st.pyplot(fig)
+
