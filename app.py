@@ -54,7 +54,7 @@ ax_vA.plot(x_rango, v_A[0, :], label='$v_A(x)$')
 ax_vA.set_title('$v_A(x)$')
 ax_vA.set_xlabel('x')
 ax_vA.set_ylabel('$v_A$')
-ax_vA.legend()
+ax_vA.set_aspect('equal')
 
 # Plot principal
 fig, ax = plt.subplots(figsize=(10, 6))
