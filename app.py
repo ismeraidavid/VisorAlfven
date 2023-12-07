@@ -11,8 +11,14 @@ x0 = st.sidebar.slider('x0', min_value=-5.0, max_value=5.0, value=0.0, step=0.1)
 t = st.sidebar.slider('t', min_value=0.0, max_value=10.0, value=1.0, step=1.0)
 
 # Creación del espacio (x,z)
-x_rango = np.linspace(-10, 10, 400)
-z_rango = np.linspace(0, 10, 200)
+
+x_rango_start = st.sidebar.slider('Inicio rango de x', min_value=-20.0, max_value=0.0, value=-10.0, step=1.0)
+x_rango_end = st.sidebar.slider('Final rango de x', min_value=0.0, max_value=20.0, value=10.0, step=1.0)
+z_rango_start = st.sidebar.slider('Inicio rango de z', min_value=0.0, max_value=20.0, value=0.0, step=1.0)
+z_rango_end = st.sidebar.slider('Final rango de z', min_value=0.0, max_value=20.0, value=10.0, step=1.0)
+
+x_rango = np.linspace(x_rango_start, x_rango_end, 400)
+z_rango = np.linspace(z_rango_start, z_rango_end, 200)
 x, z = np.meshgrid(x_rango, z_rango)
 
 # Velocidad de Alfvén
